@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>asEvented example</title>
+</head>
+<body>
+  <script src="../asevented.js"></script>
+  <script>
+    function Ball() {
+      this.counter = 0;
+    }
+
+    Ball.prototype.startBouncing = function () {
+      var self = this;
+      setInterval(function () {
+        self.trigger('bounced', ++self.counter);
+      }, 100);
+    }
+
+    // mixin asEvented with Ball
+    asEvented.call(Ball.prototype);    
+
+    var ball = new Ball();
+    ball.startBouncing();
+    
+    // bind to bounced event
+    ball.bind('bounced', function (counter) {
+
+      console.log("ball bounced:" +  counter + " times");
+      
+      // unbind after counter reach 10
+      if (counter == 10) {
+        this.unbind('bounced');
+      }
+    });
+  </script>
+</body>
+</html>
