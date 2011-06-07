@@ -4,7 +4,6 @@
  * - supports browser and server
  * - based on a new approach to mixins
  *
- *
  */
  
 var asEvented = (function () {
@@ -17,16 +16,12 @@ var asEvented = (function () {
   }
 
   function unbind(event, fn) {
-    if (event in events === false) {
-      return;
-    }
+    if (event in events === false) return;
     events[event].splice(events[event].indexOf(fn), 1);
   }
 
   function trigger(event) {
-    if (event in events === false) {
-      return;
-    }
+    if (event in events === false) return;
     for (var i = 0, l = events[event].length; i < l; i++) {
       events[event][i].apply(this, [].slice.call(arguments, 1));
     }
@@ -44,4 +39,3 @@ var asEvented = (function () {
 if ('undefined' !== typeof module && module.exports) {
   module.exports = asEvented;  
 }
-
