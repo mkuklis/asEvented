@@ -7,31 +7,31 @@
  *
  */
  
-var asEvented = (function() {
+var asEvented = (function () {
 
   var events = {};
 
   function bind(event, fn) {
-    events[event] = events[event]	|| [];
+    events[event] = events[event] || [];
     events[event].push(fn);
   }
-  
+
   function unbind(event, fn) {
-    if (event in events === false) {	
+    if (event in events === false) {
       return;
     }
     events[event].splice(events[event].indexOf(fn), 1);
   }
-  
+
   function trigger(event) {
-		if (event in events === false) {	
-		  return;
-		}
-		for (var i = 0, l = events[event].length; i < l; i++) {
-		  events[event][i].apply(this, [].slice.call(arguments, 1));
-		}
+    if (event in events === false) {
+      return;
+    }
+    for (var i = 0, l = events[event].length; i < l; i++) {
+      events[event][i].apply(this, [].slice.call(arguments, 1));
+    }
   }
-  
+
   return function (options) {
     this.bind = bind;
     this.unbind = unbind;
