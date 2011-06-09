@@ -19,7 +19,7 @@ On server install asEvented via npm first:
 
 and then include it in your project with:
 
-    var asEvented = require('asevented.js');
+    var asEvented = require('asEvented');
 
 
 ##Example Usage
