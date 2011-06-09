@@ -2,6 +2,10 @@
   , "version": "0.0.1"
   , "description": "Micro event emitter which provides the observer pattern to JavaScript object."
   , "keywords": ["evemts", "emitter", "bind", "trigger", "observer"]
-  , "author": "mkuklis <michal.kuklis@gmail.com>"
-  , "engines": { "node": "0.4.x" }
+  , "author": "Michal Kuklis <michal.kuklis@gmail.com>"
+  , "contributors"  : []
+  , "dependencies"  : []
+  , "engines": { "node": "0.4.x" },
+  , "repository": { "type": "git", "url": "git://github.com/mkuklis/asEvented.git" }
+  , "main": "asevented.js"
 }
