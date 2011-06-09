@@ -1,4 +1,4 @@
-var asEvented = require('asevented.js');
+var asEvented = require('asevented');
 
 function Model() {
   this.id = 0;

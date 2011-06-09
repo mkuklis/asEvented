@@ -37,5 +37,5 @@ var asEvented = (function () {
 
 // add support for server side
 if ('undefined' !== typeof module && module.exports) {
-  module.exports = asEvented;  
+  module.exports = asEvented;
 }
