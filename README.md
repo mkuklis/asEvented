@@ -55,8 +55,6 @@ Set a few model ids in order to trigger `change:id` event:
     model.setId(2);
     model.setId(3);
 
-##TODO
-  add tests
 
 ##License:
 <pre>
