@@ -15,7 +15,7 @@ In browser include single JavaScript file:
 
 On server install asEvented via npm first:
    
-    npm install asevented
+    npm install asEvented
 
 and then include it in your project with:
 
