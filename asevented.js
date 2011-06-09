@@ -9,7 +9,7 @@
 var asEvented = (function () {
 
   var events = {};
-
+ 
   function bind(event, fn) {
     events[event] = events[event] || [];
     events[event].push(fn);
@@ -22,12 +22,12 @@ var asEvented = (function () {
 
   function trigger(event) {
     if (event in events === false) return;
-    for (var i = 0, l = events[event].length; i < l; i++) {
+    for (var i = events[event].length - 1; i >= 0; i--) {
       events[event][i].apply(this, [].slice.call(arguments, 1));
     }
   }
 
-  return function (options) {
+  return function () {
     this.bind = bind;
     this.unbind = unbind;
     this.trigger = trigger;
