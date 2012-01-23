@@ -4,7 +4,7 @@
   , "keywords": ["evemts", "emitter", "bind", "trigger", "observer"]
   , "author": "Michal Kuklis <michal.kuklis@gmail.com>"
   , "contributors"  : []
-  , "dependencies"  : []
+  , "dependencies"  : {}
   , "engines": { "node": "0.4.x", "node":"0.6.x" }
   , "repository": { "type": "git", "url": "git://github.com/mkuklis/asEvented.git" }
   , "main": "asevented.js"
