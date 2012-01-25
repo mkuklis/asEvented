@@ -8,29 +8,28 @@
  
 var asEvented = (function () {
 
-  var events = {};
- 
   function bind(event, fn) {
-    events[event] = events[event] || [];
-    events[event].push(fn);
+    this.events[event] = this.events[event] || [];
+    this.events[event].push(fn);
   }
 
   function unbind(event, fn) {
-    if (event in events === false) return;
-    events[event].splice(events[event].indexOf(fn), 1);
+    if (event in this.events === false) return;
+    this.events[event].splice(this.events[event].indexOf(fn), 1);
   }
 
   function trigger(event) {
-    if (event in events === false) return;
-    for (var i = events[event].length - 1; i >= 0; i--) {
-      events[event][i].apply(this, [].slice.call(arguments, 1));
+    if (event in this.events === false) return;
+    for (var i = this.events[event].length - 1; i >= 0; i--) {
+      this.events[event][i].apply(this, [].slice.call(arguments, 1));
     }
   }
 
   return function () {
-    this.bind = bind;
-    this.unbind = unbind;
-    this.trigger = trigger;
+    var events = {};
+    this.bind = bind.bind({ events: events });
+    this.unbind = unbind.bind({ events: events });
+    this.trigger = trigger.bind({ events: events });
     return this;
   };
 })();
