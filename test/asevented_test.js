@@ -1,5 +1,4 @@
 $(function() {
-
   module("asEvented", {
     setup: function () {},
     teardown: function () {}
@@ -78,5 +77,22 @@ $(function() {
     equals(obj.count3, 1, 'count3 should have only been incremented once.');
     
   });
-  
+
+  test("bind same event to multiple objects", function() {
+    var obj1 = { count: 0 };
+    var obj2 = { count: 0 };
+    asEvented.call(obj1);
+    asEvented.call(obj2);
+	
+    var inc = function (obj) { obj.count += 1; };
+    obj1.bind('event', inc);
+    obj2.bind('event', inc);
+
+    obj1.trigger('event', obj1);
+    obj1.trigger('event', obj1);
+    obj2.trigger('event', obj2);
+      
+    equals(obj1.count, 2, 'obj1.count should have only been incremented twice.');
+    equals(obj2.count, 1, 'obj2.count should only have been incremented once.');
+  });
 });
