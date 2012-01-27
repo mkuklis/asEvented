@@ -1,11 +1,11 @@
 /**
- * asEvented - an event emitter mixin which provides the observer pattern to JavaScript object.
- * 
- * - supports browser and server
- * - based on a new approach to mixins
+ * asEvented v0.1 - an event emitter mixin which provides the observer pattern to JavaScript object.
  *
- */
- 
+ * Copyright 2012, Michal Kuklis
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ *
+ **/
+
 var asEvented = (function () {
 
   function bind(event, fn) {
