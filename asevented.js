@@ -1,5 +1,5 @@
 /**
- * asEvented v0.1 - an event emitter mixin which provides the observer pattern to JavaScript object.
+ * asEvented v0.2 - an event emitter mixin which provides the observer pattern to JavaScript object.
  *
  * Copyright 2012, Michal Kuklis
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -26,10 +26,12 @@ var asEvented = (function () {
   }
 
   return function () {
-    var events = {};
-    this.bind = bind.bind({ events: events });
-    this.unbind = unbind.bind({ events: events });
-    this.trigger = trigger.bind({ events: events });
+
+    this.events = {};
+    this.bind = bind;
+    this.unbind = unbind;
+    this.trigger = trigger;
+
     return this;
   };
 })();
