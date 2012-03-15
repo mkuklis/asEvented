@@ -79,10 +79,14 @@ $(function() {
   });
 
   test("bind same event to multiple objects", function() {
-    var obj1 = { count: 0 };
-    var obj2 = { count: 0 };
-    asEvented.call(obj1);
-    asEvented.call(obj2);
+    function A() {
+      this.count = 0;
+    }
+	
+    asEvented.call(A.prototype);
+	
+    var obj1 = new A();
+    var obj2 = new A();
 	
     var inc = function (obj) { obj.count += 1; };
     obj1.bind('event', inc);
