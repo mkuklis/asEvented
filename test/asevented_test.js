@@ -56,38 +56,34 @@ $(function() {
   });
 
   test("unbind multiple counters inside callbacks", function() {
-    
+
     var obj = { count1: 0, count2: 0, count3: 0 };
     asEvented.call(obj);
-    
+
     var incr1 = function(){ obj.count1 += 1; obj.unbind('event', incr1); };
     var incr2 = function(){ obj.count2 += 1; obj.unbind('event', incr2); };
     var incr3 = function(){ obj.count3 += 1; obj.unbind('event', incr3); };
-    
+
     obj.bind('event', incr1);
     obj.bind('event', incr2);
     obj.bind('event', incr3);
-    
-    obj.trigger('event'); 
+
     obj.trigger('event');
     obj.trigger('event');
-     
+    obj.trigger('event');
+
     equals(obj.count1, 1, 'count1 should have only been incremented once.');
     equals(obj.count2, 1, 'count2 should have only been incremented once.');
     equals(obj.count3, 1, 'count3 should have only been incremented once.');
-    
+
   });
 
   test("bind same event to multiple objects", function() {
-    function A() {
-      this.count = 0;
-    }
-	
-    asEvented.call(A.prototype);
-	
-    var obj1 = new A();
-    var obj2 = new A();
-	
+    var obj1 = { count: 0 };
+    var obj2 = { count: 0 };
+    asEvented.call(obj1);
+    asEvented.call(obj2);
+
     var inc = function (obj) { obj.count += 1; };
     obj1.bind('event', inc);
     obj2.bind('event', inc);
@@ -95,8 +91,31 @@ $(function() {
     obj1.trigger('event', obj1);
     obj1.trigger('event', obj1);
     obj2.trigger('event', obj2);
-      
+
     equals(obj1.count, 2, 'obj1.count should have only been incremented twice.');
     equals(obj2.count, 1, 'obj2.count should only have been incremented once.');
   });
+
+  test("bind same event to multiple objects from the same constructor", function() {
+    function A () {
+      this.count = 0;
+    }
+
+    asEvented.call(A.prototype);
+
+    var obj1 = new A();
+    var obj2 = new A();
+
+    var inc = function (obj) { obj.count += 1; };
+    obj1.bind('event', inc);
+    obj2.bind('event', inc);
+
+    obj1.trigger('event', obj1);
+    obj1.trigger('event', obj1);
+    obj2.trigger('event', obj2);
+
+    equals(obj1.count, 2, 'obj1.count should have only been incremented twice.');
+    equals(obj2.count, 1, 'obj2.count should only have been incremented once.');
+  });
+
 });
