@@ -9,30 +9,35 @@
 var asEvented = (function () {
 
   function bind(event, fn) {
-    this.events[event] = this.events[event] || [];
-    this.events[event].push(fn);
+    var events = this.events = this.events || {};
+    
+    events[event] = events[event] || [];
+    events[event].push(fn);
   }
 
   function unbind(event, fn) {
-    if (event in this.events === false) return;
-    this.events[event].splice(this.events[event].indexOf(fn), 1);
+    var events = this.events;
+    
+    if (!events || event in events === false) return;
+    events[event].splice(events[event].indexOf(fn), 1);
   }
 
   function trigger(event) {
-    if (event in this.events === false) return;
-    for (var i = this.events[event].length - 1; i >= 0; i--) {
-      this.events[event][i].apply(this, [].slice.call(arguments, 1));
+     var events = this.events;
+     
+    if (!events || event in events === false) return;
+    for (var i = events[event].length - 1; i >= 0; i--) {
+      events[event][i].apply(this, [].slice.call(arguments, 1));
     }
   }
 
   return function () {
+    var self = this;
+    self.bind = bind;
+    self.unbind = unbind;
+    self.trigger = trigger;
 
-    this.events = {};
-    this.bind = bind;
-    this.unbind = unbind;
-    this.trigger = trigger;
-
-    return this;
+    return self;
   };
 })();
 
