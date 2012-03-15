@@ -4,10 +4,10 @@ $(function() {
     teardown: function () {}
   });
 
-  test("bind and trigger", function() {
+  test("bind and trigger", function () {
     var obj = { counter: 0 };
     asEvented.call(obj);
-    obj.bind('event', function() { obj.counter += 1; });
+    obj.bind('event', function () { obj.counter += 1; });
     obj.trigger('event');
     equals(obj.counter, 1, 'counter should be incremented.');
     obj.trigger('event');
@@ -17,10 +17,10 @@ $(function() {
     equals(obj.counter, 5, 'counter should be incremented five times.');
   });
 
-  test("bind, unbind, trigger", function() {
+  test("bind, unbind, trigger", function () {
     var obj = { counter: 0 };
     asEvented.call(obj);
-    var callback = function() { obj.counter += 1; };
+    var callback = function () { obj.counter += 1; };
     obj.bind('event', callback);
     obj.trigger('event');
     obj.unbind('event');
@@ -28,12 +28,12 @@ $(function() {
     equals(obj.counter, 1, 'counter should have only been incremented once.');
   });
 
-  test("bind two counters", function() {
+  test("bind two counters", function () {
     var obj = { counterA: 0, counterB: 0 };
     asEvented.call(obj);
-    var callback = function() { obj.counterA += 1; };
+    var callback = function () { obj.counterA += 1; };
     obj.bind('event', callback);
-    obj.bind('event', function() { obj.counterB += 1; });
+    obj.bind('event', function () { obj.counterB += 1; });
     obj.trigger('event');
     obj.unbind('event', callback);
     obj.trigger('event');
@@ -41,10 +41,10 @@ $(function() {
     equals(obj.counterB, 2, 'counterB should have been incremented twice.');
   });
 
-  test("unbind inside callback", function() {
+  test("unbind inside callback", function () {
     var obj = {counter: 0};
     asEvented.call(obj);
-    var callback = function() {
+    var callback = function () {
       obj.counter += 1;
       obj.unbind('event', callback);
     };
@@ -55,14 +55,14 @@ $(function() {
     equals(obj.counter, 1, 'the callback should have been unbound.');
   });
 
-  test("unbind multiple counters inside callbacks", function() {
+  test("unbind multiple counters inside callbacks", function () {
 
     var obj = { count1: 0, count2: 0, count3: 0 };
     asEvented.call(obj);
 
-    var incr1 = function(){ obj.count1 += 1; obj.unbind('event', incr1); };
-    var incr2 = function(){ obj.count2 += 1; obj.unbind('event', incr2); };
-    var incr3 = function(){ obj.count3 += 1; obj.unbind('event', incr3); };
+    var incr1 = function () { obj.count1 += 1; obj.unbind('event', incr1); };
+    var incr2 = function () { obj.count2 += 1; obj.unbind('event', incr2); };
+    var incr3 = function () { obj.count3 += 1; obj.unbind('event', incr3); };
 
     obj.bind('event', incr1);
     obj.bind('event', incr2);
@@ -78,7 +78,7 @@ $(function() {
 
   });
 
-  test("bind same event to multiple objects", function() {
+  test("bind same event to multiple objects", function () {
     var obj1 = { count: 0 };
     var obj2 = { count: 0 };
     asEvented.call(obj1);
@@ -96,8 +96,8 @@ $(function() {
     equals(obj2.count, 1, 'obj2.count should only have been incremented once.');
   });
 
-  test("bind same event to multiple objects from the same constructor", function() {
-    function A () {
+  test("bind same event to multiple objects from the same constructor", function () {
+    function A() {
       this.count = 0;
     }
 
@@ -116,6 +116,21 @@ $(function() {
 
     equals(obj1.count, 2, 'obj1.count should have only been incremented twice.');
     equals(obj2.count, 1, 'obj2.count should only have been incremented once.');
+  });
+
+  test("one", function () {
+    var obj = { count: 0 };
+    var callback = function () { obj.count += 1; };
+
+    asEvented.call(obj);
+    obj.one('event', callback);
+
+    obj.trigger('event');
+    obj.trigger('event');
+    obj.trigger('event');
+
+    equals(obj.count, 1, 'obj.count should only have been incremented once.');
+
   });
 
 });
