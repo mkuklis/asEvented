@@ -9,14 +9,17 @@
 var asEvented = (function () {
 
   function bind(event, fn) {
-    var events = this.events = this.events || {};
-    events[event] = events[event] || [];
-    events[event].push(fn);
+    var events = this.events = this.events || {},
+        parts = event.split(/\s+/);
+    for(var i = 0, num = parts.length; i < num; i++) {
+      events[parts[i]] = events[parts[i]] || [];
+      events[parts[i]].push(fn);
+    }
   }
 
   function one(event, fn) {
     var fnc = function () {
-      fn.call(this);
+      fn.apply(this, [].slice.call(arguments));
       this.unbind(event, fnc);
     }
 
@@ -24,10 +27,16 @@ var asEvented = (function () {
   }
 
   function unbind(event, fn) {
-    var events = this.events;
+    var events = this.events, eventName;
 
-    if (!events || event in events === false) return;
-    events[event].splice(events[event].indexOf(fn), 1);
+    if(!events) return;
+
+    var parts = event.split(/\s+/);
+    for(var i = 0, num = parts.length; i < num; i++) {
+      eventName = parts[i];
+      if(eventName in events !== false)
+        events[eventName].splice(events[eventName].indexOf(fn), 1)
+    }
   }
 
   function trigger(event) {

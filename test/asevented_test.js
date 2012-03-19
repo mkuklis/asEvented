@@ -133,4 +133,74 @@ $(function() {
 
   });
 
+  test("one call passes arguments", function () {
+    var obj = { count: 0 };
+    var callback = function (arg) { obj.count = arg; };
+    asEvented.call(obj);
+
+    obj.one('event', callback);
+
+    obj.trigger('event', 3.14);
+
+    equals(obj.count, 3.14, 'obj.count should be PI.');
+  });
+
+  test('bind multiple events to one handler', function() {
+    var obj = { count: 0 };
+    var callback = function() { obj.count += 1; };
+    asEvented.call(obj);
+
+    obj.bind('load ready whatever', callback);
+
+    obj.trigger('load');
+    obj.trigger('ready');
+    obj.trigger('whatever');
+
+    equals(obj.count, 3, 'obj.count should have been incremented thrice.')
+  });
+
+  test('bind multiple events to one handler callable only once', function() {
+    var obj = { count: 0 };
+    var callback = function() { obj.count += 1; };
+    asEvented.call(obj);
+
+    obj.one('load ready whatever', callback);
+
+    obj.trigger('load');
+    obj.trigger('ready');
+    obj.trigger('whatever');
+
+    equals(obj.count, 1, 'obj.count should have been incremented once.')
+  });
+
+  test('bind multiple events and unbind only one', function() {
+    var obj = { count: 0 };
+    var callback = function() { obj.count += 1; };
+    asEvented.call(obj);
+
+    obj.bind('load ready whatever', callback);
+    obj.unbind('ready');
+
+    obj.trigger('load');
+    obj.trigger('ready');
+    obj.trigger('whatever');
+
+    equals(obj.count, 2, 'obj.count should have been incremented twice.')
+  });
+
+  test('bind multiple events and unbind all', function() {
+    var obj = { count: 0 };
+    var callback = function() { obj.count += 1; };
+    asEvented.call(obj);
+
+    obj.bind('load ready whatever', callback);
+    obj.unbind('ready load whatever');
+
+    obj.trigger('load');
+    obj.trigger('ready');
+    obj.trigger('whatever');
+
+    equals(obj.count, 0, 'obj.count should have been incremented twice.')
+  });
+
 });
