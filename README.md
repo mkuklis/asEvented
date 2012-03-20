@@ -14,12 +14,20 @@ In browser include single JavaScript file:
     <script src="asevented.js"></script>
 
 On server install asEvented via npm first:
-   
+
     npm install asEvented
 
 and then include it in your project with:
 
     var asEvented = require('asEvented');
+
+
+##Contributors
+
+@mkuklis (Michal Kuklis)
+@rk (Robert K)
+@scarsick (Alexandre Potvin Latreille)
+@mpdaugherty (Mike)
 
 
 ##Example Usage
