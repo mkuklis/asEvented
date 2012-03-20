@@ -1,6 +1,6 @@
 0.3 / 2012-03-19
 ==================
-* Feature: Added one call (@mkuklis) (@mk)
+* Feature: Added one call (@mkuklis)
 * Patch: Added support for the ONE-bound callbacks passing arguments to the event handler. (@rk)
 * Feature: Added support for binding one callback to multiple events (@rk)
 
