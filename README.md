@@ -22,14 +22,6 @@ and then include it in your project with:
     var asEvented = require('asEvented');
 
 
-##Contributors
-
-@mkuklis (Michal Kuklis)
-@rk (Robert K)
-@scarsick (Alexandre Potvin Latreille)
-@mpdaugherty (Mike)
-
-
 ##Example Usage
 Define the constructor which will make use of asEvented:
     
@@ -72,6 +64,15 @@ A single handler can be bound to multiple events by separating the events by spa
 And multiple events can be unbound in one call:
 
     model.unbind('onload onready');
+
+
+##Contributors
+
+* @mkuklis (Michal Kuklis)
+* @rk (Robert K)
+* @scarsick (Alexandre Potvin Latreille)
+* @mpdaugherty (Mike)
+
 
 ##License:
 <pre>
