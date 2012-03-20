@@ -55,6 +55,15 @@ Set a few model ids in order to trigger `change:id` event:
     model.setId(2);
     model.setId(3);
 
+A single handler can be bound to multiple events by separating the events by spaces, though it will be ignorant of the triggering event:
+
+    model.bind('change:id change:pass', function() {
+      console.log('Event called.');
+    });
+
+And multiple events can be unbound in one call:
+
+    model.unbind('onload onready');
 
 ##License:
 <pre>
