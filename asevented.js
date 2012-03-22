@@ -1,6 +1,6 @@
-/*! asEvented v0.2.1 github.com/mkuklis/asEvented | Dual licensed under the MIT or GPL Version 2 licenses. */
+/*! asEvented v0.3.1 github.com/mkuklis/asEvented | Dual licensed under the MIT or GPL Version 2 licenses. */
 /**
- * asEvented v0.2.1 - an event emitter mixin which provides the observer pattern to JavaScript object.
+ * asEvented v0.3.1 - an event emitter mixin which provides the observer pattern to JavaScript object.
  *
  * Copyright 2012, Michal Kuklis
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -12,7 +12,7 @@ var asEvented = (function () {
   function bind(event, fn) {
     var events = this.events = this.events || {},
         parts = event.split(/\s+/);
-    for(var i = 0, num = parts.length; i < num; i++) {
+    for (var i = 0, num = parts.length; i < num; i++) {
       events[parts[i]] = events[parts[i]] || [];
       events[parts[i]].push(fn);
     }
@@ -28,13 +28,14 @@ var asEvented = (function () {
   function unbind(event, fn) {
     var events = this.events, eventName;
 
-    if(!events) return;
+    if (!events) return;
 
     var parts = event.split(/\s+/);
-    for(var i = 0, num = parts.length; i < num; i++) {
+    for (var i = 0, num = parts.length; i < num; i++) {
       eventName = parts[i];
-      if(eventName in events !== false)
-        events[eventName].splice(events[eventName].indexOf(fn), 1)
+      if (eventName in events !== false) {
+        events[eventName].splice(events[eventName].indexOf(fn), 1);
+      }
     }
   }
 

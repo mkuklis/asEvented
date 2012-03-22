@@ -14,7 +14,7 @@ In browser include single JavaScript file:
     <script src="asevented.js"></script>
 
 On server install asEvented via npm first:
-   
+
     npm install asEvented
 
 and then include it in your project with:
@@ -64,6 +64,15 @@ A single handler can be bound to multiple events by separating the events by spa
 And multiple events can be unbound in one call:
 
     model.unbind('onload onready');
+
+
+##Contributors
+
+* @mkuklis (Michal Kuklis)
+* @rk (Robert K)
+* @scarsick (Alexandre Potvin Latreille)
+* @mpdaugherty (Mike)
+
 
 ##License:
 <pre>
