@@ -1,5 +1,6 @@
+/*! asEvented v0.3.1 github.com/mkuklis/asEvented | Dual licensed under the MIT or GPL Version 2 licenses. */
 /**
- * asEvented v0.3 - an event emitter mixin which provides the observer pattern to JavaScript object.
+ * asEvented v0.3.1 - an event emitter mixin which provides the observer pattern to JavaScript object.
  *
  * Copyright 2012, Michal Kuklis
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -18,12 +19,10 @@ var asEvented = (function () {
   }
 
   function one(event, fn) {
-    var fnc = function () {
+    this.bind(event, function fnc() {
       fn.apply(this, [].slice.call(arguments));
       this.unbind(event, fnc);
-    }
-
-    this.bind(event, fnc);
+    })
   }
 
   function unbind(event, fn) {
@@ -44,8 +43,8 @@ var asEvented = (function () {
     var events = this.events;
 
     if (!events || event in events === false) return;
-    for (var i = events[event].length - 1; i >= 0; i--) {
-      events[event][i].apply(this, [].slice.call(arguments, 1));
+    for (var i = events[event].length - 1, args = [].slice.call(arguments, 1); i >= 0; i--) {
+      events[event][i].apply(this, args);
     }
   }
 
