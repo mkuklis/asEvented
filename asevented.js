@@ -8,7 +8,7 @@
 
 var asEvented = (function () {
   
-  var SLICE = Array.prototype.slice;
+  var SLICE = [].slice;
 
   function bind(event, fn) {
     var events = this.events = this.events || {},
