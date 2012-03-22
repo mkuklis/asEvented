@@ -7,23 +7,29 @@
  **/
 
 var asEvented = (function () {
+  
+  var SLICE = Array.prototype.slice;
 
   function bind(event, fn) {
     var events = this.events = this.events || {},
-        parts = event.split(/\s+/);
-    for (var i = 0, num = parts.length; i < num; i++) {
-      events[parts[i]] = events[parts[i]] || [];
-      events[parts[i]].push(fn);
+        parts = event.split(/\s+/),
+        i = 0,
+        num = parts.length,
+        part;
+        
+    for (; i < num; i++) {
+      events[(part = parts[i])] = events[part] || [];
+      events[part].push(fn);
     }
   }
 
   function one(event, fn) {
-    var fnc = function () {
-      fn.apply(this, [].slice.call(arguments));
+    
+    this.bind(event, function fnc() {
+      fn.apply(this, SLICE.call(arguments));
       this.unbind(event, fnc);
-    }
-
-    this.bind(event, fnc);
+    });
+    
   }
 
   function unbind(event, fn) {
@@ -33,19 +39,18 @@ var asEvented = (function () {
 
     var parts = event.split(/\s+/);
     for (var i = 0, num = parts.length; i < num; i++) {
-      eventName = parts[i];
-      if (eventName in events !== false) {
+      if ((eventName = parts[i]) in events !== false) {
         events[eventName].splice(events[eventName].indexOf(fn), 1);
       }
     }
   }
 
   function trigger(event) {
-    var events = this.events;
+    var events = this.events, i;
 
     if (!events || event in events === false) return;
-    for (var i = events[event].length - 1; i >= 0; i--) {
-      events[event][i].apply(this, [].slice.call(arguments, 1));
+    for (i = (event = events[event]).length - 1; i >= 0; i--) {
+      event[i].apply(this, SLICE.call(arguments, 1));
     }
   }
 
