@@ -1,3 +1,7 @@
+0.3.1 / 2012-03-22
+==================
+* Patch: More performance tweaks (@scarsick, @rk)
+
 0.3 / 2012-03-19
 ==================
 * Feature: Added one call (@mkuklis)
