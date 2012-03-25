@@ -1,14 +1,12 @@
 /**
- * asEvented v0.3 - an event emitter mixin which provides the observer pattern to JavaScript object.
+ * asEvented v0.3.1 - an event emitter mixin which provides the observer pattern to JavaScript object.
  *
  * Copyright 2012, Michal Kuklis
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
  **/
 
-var asEvented = (function () {
-
-  var SLICE = [].slice;
+var asEvented = (function (slice) {
 
   function bind(event, fn) {
     var events = this.events = this.events || {},
@@ -25,7 +23,7 @@ var asEvented = (function () {
 
   function one(event, fn) {
     this.bind(event, function fnc() {
-      fn.apply(this, SLICE.call(arguments));
+      fn.apply(this, slice.call(arguments));
       this.unbind(event, fnc);
     });
   }
@@ -48,7 +46,7 @@ var asEvented = (function () {
 
     if (!events || event in events === false) return;
 
-    args = SLICE.call(arguments, 1);
+    args = slice.call(arguments, 1);
     for (i = events[event].length - 1; i >= 0; i--) {
       events[event][i].apply(this, args);
     }
@@ -62,7 +60,7 @@ var asEvented = (function () {
 
     return this;
   };
-})();
+})([].slice);
 
 // add support for server side
 if ('undefined' !== typeof module && module.exports) {

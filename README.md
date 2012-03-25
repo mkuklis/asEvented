@@ -10,7 +10,7 @@ It works in the browser and server (node.js). The code follows a functional mixi
 ## Usage
 
 In browser include single JavaScript file:
- 
+
     <script src="asevented.js"></script>
 
 On server install asEvented via npm first:
@@ -33,7 +33,7 @@ Add (mixin) asEvented functionality to Model with:
    
     asEvented.call(Model.prototype);
 
-model now has access to **trigger**, **bind** and **unbind** functions
+model now has access to **trigger**, **bind**, **one** and **unbind** functions
 
 Add some functions to Model:
 
