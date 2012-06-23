@@ -17,6 +17,19 @@ $(function() {
     equals(obj.counter, 5, 'counter should be incremented five times.');
   });
 
+  test("on and trigger", function() {
+    var obj = { counter: 0 };
+    asEvented.call(obj);
+    obj.on('event', function () { obj.counter += 1; });
+    obj.trigger('event');
+    equals(obj.counter, 1, 'counter should be incremented.');
+    obj.trigger('event');
+    obj.trigger('event');
+    obj.trigger('event');
+    obj.trigger('event');
+    equals(obj.counter, 5, 'counter should be incremented five times.');
+  });
+
   test("bind, unbind, trigger", function () {
     var obj = { counter: 0 };
     asEvented.call(obj);
