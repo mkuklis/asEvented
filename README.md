@@ -33,7 +33,7 @@ Add (mixin) asEvented functionality to Model with:
    
     asEvented.call(Model.prototype);
 
-model now has access to **trigger**, **bind**, **one** and **unbind** functions
+model has now access to **trigger**, **bind**/**on**, **one** and **unbind**/**off** functions
 
 Add some functions to Model:
 
@@ -68,11 +68,11 @@ And multiple events can be unbound in one call:
 
 ##Contributors
 
-* @mkuklis (Michal Kuklis)
-* @rk (Robert K)
-* @scarsick (Alexandre Potvin Latreille)
-* @mpdaugherty (Mike)
-
+* [@mkuklis](@mkuklis)
+* [@rk](@rk)
+* [@scarsick](@scarsick)
+* [@mpdaugherty](@mpdaugherty)
+* [@zspencer](@zspencer)
 
 ##License:
 <pre>
