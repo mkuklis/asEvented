@@ -68,11 +68,11 @@ And multiple events can be unbound in one call:
 
 ##Contributors
 
-* [@mkuklis](@mkuklis)
-* [@rk](@rk)
-* [@scarsick](@scarsick)
-* [@mpdaugherty](@mpdaugherty)
-* [@zspencer](@zspencer)
+* [mkuklis](@mkuklis)
+* [rk](@rk)
+* [scarsick](@scarsick)
+* [mpdaugherty](@mpdaugherty)
+* [zspencer](@zspencer)
 
 ##License:
 <pre>
