@@ -53,7 +53,7 @@ var asEvented = (function (slice) {
   }
 
   return function () {
-    this.bind = bind;
+    this.bind = this.on = bind;
     this.unbind = unbind;
     this.trigger = trigger;
     this.one = one;
