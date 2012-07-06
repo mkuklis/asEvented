@@ -29,7 +29,7 @@ var asEvented = (function (slice) {
   }
 
   function unbind(event, fn) {
-    var events = this.events, eventName, i, parts;
+    var events = this.events, eventName, i, parts, num;
 
     if (!events) return;
 
