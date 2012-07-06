@@ -1,5 +1,5 @@
 {   "name": "asEvented"
-  , "version": "0.3.2"
+  , "version": "0.3.3"
   , "description": "Micro event emitter which provides the observer pattern to JavaScript object."
   , "keywords": ["evemts", "emitter", "bind", "trigger", "observer"]
   , "author": "Michal Kuklis <michal.kuklis@gmail.com>"
