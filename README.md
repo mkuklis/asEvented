@@ -73,6 +73,7 @@ And multiple events can be unbound in one call:
 * [@scarsick](http://github.com/scarsick)
 * [@mpdaugherty](http://github.com/mpdaugherty)
 * [@zspencer](http://github.com/zspencer)
+* [@travishorn](http://github.com/travishorn)
 
 ##License:
 <pre>

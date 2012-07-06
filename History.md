@@ -1,3 +1,7 @@
+0.3.3 / 2012-07-06
+==================
+* Bugfix: fix global leak for num var (@travishorn)
+
 0.3.2 / 2012-06-23
 ==================
 * Feature: Added on/off aliases for bind/unbind
