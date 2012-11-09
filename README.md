@@ -1,6 +1,6 @@
-[![build status](https://secure.travis-ci.org/mkuklis/asEvented.png)](http://travis-ci.org/mkuklis/asEvented)
 #asEvented
- * [github.com/mkuklis/asEvented](github.com/mkuklis/asEvented)
+
+[![build status](https://secure.travis-ci.org/mkuklis/asEvented.png)](http://travis-ci.org/mkuklis/asEvented)
 
 ## Description
 
