@@ -54,6 +54,19 @@ $(function() {
     equals(obj.counterB, 2, 'counterB should have been incremented twice.');
   });
 
+  test("unbind non-existent callback", function () {
+    var obj = { counter: 0 };
+    asEvented.call(obj);
+    var callback = function () { obj.counter +=1 };
+    var fakeCallback = function () {};
+    obj.bind('event', callback);
+    obj.trigger('event');
+    equals(obj.counter, 1, 'counter should be incremented.');
+    obj.unbind('event', fakeCallback);
+    obj.trigger('event');
+    equals(obj.counter, 2, 'counter should be incremented twice.');
+  });
+
   test("unbind inside callback", function () {
     var obj = {counter: 0};
     asEvented.call(obj);
