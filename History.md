@@ -1,3 +1,7 @@
+0.4.0 / 2012-12-30
+==================
+* Feature: Added support for AMD and CommonJS (@KenPowers)
+
 0.3.3 / 2012-07-06
 ==================
 * Bugfix: fix global leak for num var (@travishorn)
