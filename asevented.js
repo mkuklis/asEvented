@@ -21,13 +21,12 @@
     var slice = ArrayProto.slice;
 
     function bind(event, fn) {
-      var events = this.events = this.events || {},
-          parts = event.split(/\s+/),
-          i = 0,
-          num = parts.length,
-          part;
+      var i, part;
+      var events = this.events = this.events || {};
+      var parts = event.split(/\s+/);
+      var num = parts.length;
 
-      for (; i < num; i++) {
+      for (i = 0; i < num; i++) {
         events[(part = parts[i])] = events[part] || [];
         events[part].push(fn);
       }
@@ -44,7 +43,8 @@
     }
 
     function unbind(event, fn) {
-      var events = this.events, eventName, i, parts, num, index;
+      var eventName, i, index, num, parts;
+      var events = this.events;
 
       if (!events) return;
 
@@ -60,7 +60,8 @@
     }
 
     function trigger(event) {
-      var events = this.events, i, args;
+      var args, i;
+      var events = this.events;
 
       if (!events || event in events === false) return;
 
