@@ -1,3 +1,7 @@
+0.4.1 / 2012-12-31
+==================
+* Bugfix: Fixed issues under >IE9 (@nazomikan)
+
 0.4.0 / 2012-12-30
 ==================
 * Feature: Added support for AMD and CommonJS (@KenPowers)
