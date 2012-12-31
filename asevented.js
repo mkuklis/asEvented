@@ -15,6 +15,7 @@
   }
 })('asEvented', this, function () {
   return (function (slice) {
+    var nativeIndexOf = Array.prototype.indexOf;
 
     function bind(event, fn) {
       var events = this.events = this.events || {},
@@ -30,21 +31,27 @@
     }
 
     function one(event, fn) {
-      this.bind(event, function fnc() {
+      // [notice] The value of fn and fn1 is not equivalent in the case of the following MSIE.
+      // var fn = function fn1 () { alert(fn === fn1) } ie.<9 false
+      var fnc = function () {
         fn.apply(this, slice.call(arguments));
         this.unbind(event, fnc);
-      });
+      };
+      this.bind(event, fnc);
     }
 
     function unbind(event, fn) {
-      var events = this.events, eventName, i, parts, num;
+      var events = this.events, eventName, i, parts, num, index;
 
       if (!events) return;
 
       parts = event.split(/\s+/);
       for (i = 0, num = parts.length; i < num; i++) {
         if ((eventName = parts[i]) in events !== false) {
-          events[eventName].splice(events[eventName].indexOf(fn), 1);
+          index = (fn) ? _indexOf(events[eventName], fn) : 0;
+          if (index !== -1) {
+            events[eventName].splice(index, 1);
+          }
         }
       }
     }
@@ -58,6 +65,21 @@
       for (i = events[event].length - 1; i >= 0; i--) {
         events[event][i].apply(this, args);
       }
+    }
+
+    function _indexOf(array, needle) {
+      var i, l;
+
+      if (nativeIndexOf && array.indexOf === nativeIndexOf) {
+        return array.indexOf(needle);
+      }
+
+      for (i = 0, l = array.length; i < l; i++) {
+        if (array[i] === needle) {
+          return i;
+        }
+      }
+      return -1;
     }
 
     return function () {
