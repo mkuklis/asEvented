@@ -1,3 +1,7 @@
+0.4.2 / 2013-04-01
+==================
+* Bugfix: Fixed AMD detection (@whiteinge)
+
 0.4.1 / 2012-12-31
 ==================
 * Bugfix: Fixed issues under >IE9 (@nazomikan)

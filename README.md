@@ -4,7 +4,7 @@
 
 ## Description
 
-asEvented is a micro event emitter which provides the observer pattern to JavaScript object. 
+asEvented is a micro event emitter which provides the observer pattern to JavaScript object.
 It works in the browser and server (node.js). The code follows a functional mixins pattern described by Angus Croll [a-fresh-look-at-javascript-mixins](http://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins).
 
 
@@ -25,13 +25,13 @@ and then include it in your project with:
 
 ##Example Usage
 Define the constructor which will make use of asEvented:
-    
+
     function Model() {
       this.id = 0;
     }
 
 Add (mixin) asEvented functionality to Model with:
-   
+
     asEvented.call(Model.prototype);
 
 model has now access to **trigger**, **bind**/**on**, **one** and **unbind**/**off** functions
@@ -51,7 +51,7 @@ Create a new object and bind to `change:id` event:
     });
 
 Set a few model ids in order to trigger `change:id` event:
-    
+
     model.setId(1);
     model.setId(2);
     model.setId(3);
@@ -77,6 +77,7 @@ And multiple events can be unbound in one call:
 * [@travishorn](http://github.com/travishorn)
 * [@KenPowers](http://github.com/KenPowers)
 * [@nazomikan](http://github.com/nazomikan)
+* [@whiteinge]((http://github.com/whiteinge)
 
 ##License:
 <pre>
