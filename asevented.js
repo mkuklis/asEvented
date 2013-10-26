@@ -30,6 +30,7 @@
         events[(part = parts[i])] = events[part] || [];
         events[part].push(fn);
       }
+      return this;
     }
 
     function one(event, fn) {
@@ -40,6 +41,7 @@
         this.unbind(event, fnc);
       };
       this.bind(event, fnc);
+      return this;
     }
 
     function unbind(event, fn) {
@@ -57,6 +59,7 @@
           }
         }
       }
+      return this;
     }
 
     function trigger(event) {
@@ -69,6 +72,7 @@
       for (i = events[event].length - 1; i >= 0; i--) {
         events[event][i].apply(this, args);
       }
+      return this;
     }
 
     function _indexOf(array, needle) {
@@ -88,9 +92,9 @@
 
     return function () {
       this.bind = this.on = bind;
-      this.unbind = this.off = unbind;
-      this.trigger = trigger;
-      this.one = one;
+      this.unbind = this.off = this.removeListener = unbind;
+      this.trigger = this.emit = trigger;
+      this.one = this.once = one;
 
       return this;
     };
