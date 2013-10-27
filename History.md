@@ -1,3 +1,8 @@
+0.4.3 / 2013-10-27
+==================
+* Feature: Made chainable (@michaelrhodes)
+* Added node-style aliases (@michaelrhodes)
+
 0.4.2 / 2013-04-01
 ==================
 * Bugfix: Fixed AMD detection (@whiteinge)
