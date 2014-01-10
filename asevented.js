@@ -8,7 +8,7 @@
 (function (name, global, definition) {
   if (typeof module !== 'undefined') {
     module.exports = definition();
-  } else if (typeof require !== 'undefined' && typeof define.amd === 'object') {
+  } else if (typeof define === 'function' && define.amd) {
     define(definition);
   } else {
     global[name] = definition();
