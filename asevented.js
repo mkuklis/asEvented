@@ -37,8 +37,8 @@
       // [notice] The value of fn and fn1 is not equivalent in the case of the following MSIE.
       // var fn = function fn1 () { alert(fn === fn1) } ie.<9 false
       var fnc = function () {
-        fn.apply(this, slice.call(arguments));
         this.unbind(event, fnc);
+        fn.apply(this, slice.call(arguments));
       };
       this.bind(event, fnc);
       return this;

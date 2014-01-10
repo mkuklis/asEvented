@@ -171,6 +171,27 @@ $(function() {
     equals(obj.count, 3.14, 'obj.count should be PI.');
   });
 
+  test("one nested calls", function () {
+    var obj = { count: 0 };
+    asEvented.call(obj);
+
+    obj.one('event', function() {
+        obj.count += 1;
+
+        obj.one('event', function() {
+            obj.count += 1;
+        });
+
+        // Must be triggered within bound function
+        obj.trigger('event');
+    });
+
+    obj.trigger('event');
+
+    equals(obj.count, 2, 'obj.count should only have been incremented twice.');
+
+  });
+
   test('bind multiple events to one handler', function() {
     var obj = { count: 0 };
     var callback = function() { obj.count += 1; };
