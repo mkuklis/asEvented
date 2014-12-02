@@ -1,3 +1,7 @@
+0.4.4 / 2014-12-02
+==================
+* Feature: Prevent multiple bindings of same listener for an event (@sirflo)
+
 0.4.3 / 2013-10-27
 ==================
 * Feature: Made chainable (@michaelrhodes)
