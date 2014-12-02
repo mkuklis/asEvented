@@ -203,7 +203,7 @@ $(function() {
     obj.trigger('ready');
     obj.trigger('whatever');
 
-    equals(obj.count, 3, 'obj.count should have been incremented thrice.')
+    equals(obj.count, 3, 'obj.count should have been incremented thrice.');
   });
 
   test('bind multiple events to one handler callable only once', function() {
@@ -217,7 +217,7 @@ $(function() {
     obj.trigger('ready');
     obj.trigger('whatever');
 
-    equals(obj.count, 1, 'obj.count should have been incremented once.')
+    equals(obj.count, 1, 'obj.count should have been incremented once.');
   });
 
   test('bind multiple events and unbind only one', function() {
@@ -232,7 +232,7 @@ $(function() {
     obj.trigger('ready');
     obj.trigger('whatever');
 
-    equals(obj.count, 2, 'obj.count should have been incremented twice.')
+    equals(obj.count, 2, 'obj.count should have been incremented twice.');
   });
 
   test('bind multiple events and unbind all', function() {
@@ -247,7 +247,7 @@ $(function() {
     obj.trigger('ready');
     obj.trigger('whatever');
 
-    equals(obj.count, 0, 'obj.count should have been incremented twice.')
+    equals(obj.count, 0, 'obj.count should not have been incremented.');
   });
 
 });
