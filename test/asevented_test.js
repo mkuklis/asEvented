@@ -247,7 +247,7 @@ $(function() {
     obj.trigger('ready');
     obj.trigger('whatever');
 
-    equals(obj.count, 0, 'obj.count should have been incremented twice.')
+    equals(obj.count, 0, 'obj.count should not have been incremented.')
   });
 
 });
