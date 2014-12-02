@@ -28,7 +28,9 @@
 
       for (i = 0; i < num; i++) {
         events[(part = parts[i])] = events[part] || [];
-        events[part].push(fn);
+        if (_indexOf(events[part], fn) === -1) {
+          events[part].push(fn);
+        }
       }
       return this;
     }
