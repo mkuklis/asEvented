@@ -250,4 +250,17 @@ $(function() {
     equals(obj.count, 0, 'obj.count should have been incremented twice.')
   });
 
+  test('bind function multiple times', function() {
+    var obj = { count: 0 };
+    var callback = function() { obj.count += 1; };
+    asEvented.call(obj);
+
+    obj.bind('whatever', callback);
+    obj.bind('whatever', callback);
+
+    obj.trigger('whatever');
+
+    equals(obj.count, 1, 'obj.count should have been incremented once.');
+  });
+
 });
