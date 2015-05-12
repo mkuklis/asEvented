@@ -50,7 +50,7 @@
       var eventName, i, index, num, parts;
       var events = this.events;
 
-      if (!events) return;
+      if (!events) return this;
 
       parts = event.split(/\s+/);
       for (i = 0, num = parts.length; i < num; i++) {
@@ -68,7 +68,7 @@
       var args, i;
       var events = this.events;
 
-      if (!events || event in events === false) return;
+      if (!events || event in events === false) return this;
 
       args = slice.call(arguments, 1);
       for (i = events[event].length - 1; i >= 0; i--) {
