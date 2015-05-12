@@ -1,3 +1,7 @@
+0.4.5 / 2015-05-11
+==================
+* Bugfix: Retun correct context from trigger and unbind (@vojtechkral)
+
 0.4.4 / 2014-12-02
 ==================
 * Feature: Prevent multiple bindings of same listener for an event (@sirflo)

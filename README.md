@@ -80,11 +80,12 @@ And multiple events can be unbound in one call:
 * [@whiteinge](http://github.com/whiteinge)
 * [@michaelrhodes](http://github.com/michaelrhodes)
 * [@sirflo](http://github.com/sirflo)
+* [@vojtechkral](http://github.com/vojtechkral)
 
 ##License:
 <pre>
 (The MIT License)
 
-Copyright (c) 2014 Michal Kuklis
+Copyright (c) 2015 Michal Kuklis
 
 </pre>
