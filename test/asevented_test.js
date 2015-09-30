@@ -36,7 +36,7 @@ $(function() {
     var callback = function () { obj.counter += 1; };
     obj.bind('event', callback);
     obj.trigger('event');
-    obj.unbind('event');
+    obj.unbind('event', callback);
     obj.trigger('event');
     equals(obj.counter, 1, 'counter should have only been incremented once.');
   });
@@ -226,7 +226,7 @@ $(function() {
     asEvented.call(obj);
 
     obj.bind('load ready whatever', callback);
-    obj.unbind('ready');
+    obj.unbind('ready', callback);
 
     obj.trigger('load');
     obj.trigger('ready');
@@ -241,7 +241,7 @@ $(function() {
     asEvented.call(obj);
 
     obj.bind('load ready whatever', callback);
-    obj.unbind('ready load whatever');
+    obj.unbind('ready load whatever', callback);
 
     obj.trigger('load');
     obj.trigger('ready');
