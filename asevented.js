@@ -55,7 +55,7 @@
       parts = event.split(/\s+/);
       for (i = 0, num = parts.length; i < num; i++) {
         if ((eventName = parts[i]) in events !== false) {
-          index = (fn) ? _indexOf(events[eventName], fn) : 0;
+          index = (fn) ? _indexOf(events[eventName], fn) : -1;
           if (index !== -1) {
             events[eventName].splice(index, 1);
           }
