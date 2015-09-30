@@ -263,4 +263,16 @@ $(function() {
     equals(obj.count, 1, 'obj.count should have been incremented once.');
   });
 
+  test('unbind without callback', function() {
+    var obj = { count: 0 };
+    var callback = function() { obj.count += 1; };
+    asEvented.call(obj);
+
+    obj.bind('whatever', callback);
+    obj.trigger('whatever');
+    obj.unbind('whatever', undefined);
+    obj.trigger('whatever');
+
+    equals(obj.count, 2, 'obj.count should have been incremented twice.');
+  });
 });
