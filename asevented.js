@@ -66,13 +66,14 @@
 
     function trigger(event) {
       var args, i;
-      var events = this.events;
+      var events = this.events, handlers;
 
       if (!events || event in events === false) return this;
 
       args = slice.call(arguments, 1);
-      for (i = events[event].length - 1; i >= 0; i--) {
-        events[event][i].apply(this, args);
+      handlers = events[event];
+      for (i = 0; i < handlers.length; i++) {
+        handlers[i].apply(this, args);
       }
       return this;
     }
