@@ -275,4 +275,24 @@ $(function() {
 
     equals(obj.count, 2, 'obj.count should have been incremented twice.');
   });
+
+  test('trigger respects bind order', function() {
+    var obj = {values: []};
+    asEvented.call(obj);
+
+    obj.bind('whatever', function() {
+      this.values.push(1)
+    });
+    obj.bind('whatever', function() {
+      this.values.push(2)
+    });
+    obj.bind('whatever', function() {
+      this.values.push(3)
+    });
+    obj.trigger('whatever');
+
+    equals(obj.values.length, 3, 'trigger was called for all binds');
+    equals(obj.values[0], 1, 'first bind callback executed first');
+    equals(obj.values[2], 3, 'last bind callback executed last');
+  });
 });
