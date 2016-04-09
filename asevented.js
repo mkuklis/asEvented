@@ -1,5 +1,5 @@
 /**
- * asEvented v0.4.5 - an event emitter mixin which provides the observer pattern to JavaScript object.
+ * asEvented v0.4.6 - an event emitter mixin which provides the observer pattern to JavaScript object.
  *
  * Copyright 2015, Michal Kuklis
  * Dual licensed under the MIT or GPL Version 2 licenses.

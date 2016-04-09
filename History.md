@@ -1,6 +1,10 @@
+0.4.6 / 2016-04-07
+==================
+* Feature: Fixed trigger order (@garex)
+
 0.4.5 / 2015-05-11
 ==================
-* Bugfix: Retun correct context from trigger and unbind (@vojtechkral)
+* Bugfix: Return correct context from trigger and unbind (@vojtechkral)
 
 0.4.4 / 2014-12-02
 ==================

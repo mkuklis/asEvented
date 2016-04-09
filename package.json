@@ -1,6 +1,6 @@
 {
   "name": "asevented",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Micro event emitter which provides the observer pattern to JavaScript object.",
   "keywords": ["events", "emitter", "bind", "trigger", "observer"],
   "author": "Michal Kuklis <michal.kuklis@gmail.com>",

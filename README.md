@@ -81,6 +81,7 @@ And multiple events can be unbound in one call:
 * [@michaelrhodes](http://github.com/michaelrhodes)
 * [@sirflo](http://github.com/sirflo)
 * [@vojtechkral](http://github.com/vojtechkral)
+* [@garex](http://github.com/garex)
 
 ##License:
 <pre>
