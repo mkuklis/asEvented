@@ -1,4 +1,4 @@
-#asEvented
+# asEvented
 
 [![build status](https://secure.travis-ci.org/mkuklis/asEvented.png)](http://travis-ci.org/mkuklis/asEvented)
 
